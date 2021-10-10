@@ -53,7 +53,7 @@ Where `DATALOADER.EVAL_BATCH_SIZE` controls batch size during inference. Set to 
 
 # Pretrained models
 
-Pretrained models after end-to-end training and their results: 
+Pretrained models after full training and their results: 
 
 |Dataset| Backbone | PQ | PQ_st | PQ_th | Per image inference time (s) | Checkpoint file |
 |--|--|--|--|--|--|--|
