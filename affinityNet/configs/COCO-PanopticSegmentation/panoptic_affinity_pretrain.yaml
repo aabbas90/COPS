@@ -1,0 +1,32 @@
+_BASE_: base_panoptic_affinity_pretrain.yaml
+MODEL:
+  # WEIGHTS: "detectron2://DeepLab/R-52.pkl"
+  WEIGHTS: "output/coco/v6_changed/pretrained.pth"
+  WEIGHTS: "detectron2://DeepLab/R-52.pkl"
+  PIXEL_MEAN: [123.675, 116.280, 103.530]
+  PIXEL_STD: [58.395, 57.120, 57.375]
+  SIZE_DIVISIBILITY: 640
+  BACKBONE:
+    NAME: "build_resnet_deeplab_backbone"
+  RESNETS:
+    DEPTH: 50
+    NORM: "SyncBN"
+    RES5_MULTI_GRID: [1, 2, 4]
+    STEM_TYPE: "deeplab"
+    STEM_OUT_CHANNELS: 128
+    STRIDE_IN_1X1: False
+SOLVER:
+  OPTIMIZER: "ADAM"
+  WEIGHT_DECAY: 0.0
+  WEIGHT_DECAY_NORM: 0.0
+  WEIGHT_DECAY_BIAS: 0.0
+  LR_SCHEDULER_NAME: "WarmupPolyLR"
+  BASE_LR: 0.0001
+  MAX_ITER: 50000
+  IMS_PER_BATCH: 48
+  CHECKPOINT_PERIOD: 5000
+OUTPUT_DIR: "./output/coco/pretrained/"
+VAL_LOSS_PERIOD: -1
+SEED: -1
+TEST:
+  EVAL_PERIOD: -1

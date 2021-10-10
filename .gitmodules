@@ -1,0 +1,12 @@
+[submodule "depends/cityscapesScripts"]
+	path = depends/cityscapesScripts
+	url = https://github.com/mcordts/cityscapesScripts.git
+[submodule "depends/panopticapi"]
+	path = depends/panopticapi
+	url = https://github.com/aabbas90/panopticapi.git
+[submodule "depends/detectron2"]
+	path = depends/detectron2
+	url = https://github.com/aabbas90/detectron2.git
+[submodule "depends/LPMP"]
+	path = depends/LPMP
+	url = https://github.com/LPMP/LPMP.git

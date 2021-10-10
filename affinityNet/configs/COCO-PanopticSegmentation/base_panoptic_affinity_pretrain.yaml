@@ -1,0 +1,63 @@
+MODEL:
+  META_ARCHITECTURE: "PanopticAffinity"
+  BACKBONE:
+    FREEZE_AT: 0
+  RESNETS:
+    OUT_FEATURES: ["res2", "res3", "res5"]
+    RES5_DILATION: 2
+  SEM_SEG_HEAD:
+    NAME: "PanopticAffinitySemSegHead"
+    IN_FEATURES: ["res2", "res3", "res5"]
+    PROJECT_FEATURES: ["res2", "res3"]
+    PROJECT_CHANNELS: [32, 64]
+    ASPP_CHANNELS: 256
+    ASPP_DILATIONS: [6, 12, 18]
+    ASPP_DROPOUT: 0.1
+    HEAD_CHANNELS: 256
+    CONVS_DIM: 256
+    COMMON_STRIDE: 4
+    LOSS_TYPE: "hard_pixel_mining"
+    NORM: "SyncBN"
+    LOSS_WEIGHT: 1.0
+    NUM_CLASSES: 133
+    LOSS_TOP_K: 1.0
+  AFF_EMBED_HEAD:
+    NAME: "PanopticAffinityInsEmbedHead"
+    IN_FEATURES: ["res2", "res3", "res5"]
+    PROJECT_FEATURES: ["res2", "res3"]
+    PROJECT_CHANNELS: [32, 64]
+    ASPP_CHANNELS: 256
+    ASPP_DILATIONS: [6, 12, 18]
+    ASPP_DROPOUT: 0.1
+    HEAD_CHANNELS: 256
+    CONVS_DIM: 256
+    COMMON_STRIDE: 4
+    NORM: "SyncBN"
+    AFF_LOSS_WEIGHT: 0.25
+    EDGE_DISTANCES: [1, 4, 16, 32]
+    EDGE_SAMPLING_INTERVALS: [1, 1, 1, 1]
+    LOSS_TOP_K: 0.25
+  PANOPTIC_AFFINITY:
+    AMC_LOSS_WEIGHT: 0.0
+    STUFF_AREA: 4096
+DATASETS:
+  TRAIN: ("coco_2017_train_panoptic",)
+  TEST: ("coco_2017_val_panoptic",)
+INPUT:
+  INSTANCE_LOSS_WEIGHT: 4.0
+  IGNORE_STUFF_IN_AFFINITIES: False
+  IGNORE_CROWD: False
+  FORMAT: "RGB"
+  MIN_SIZE_TRAIN: !!python/object/apply:eval ["[int(x * 0.1 * 640) for x in range(5, 16)]"]
+  MIN_SIZE_TRAIN_SAMPLING: "choice"
+  MIN_SIZE_TEST: 640
+  MAX_SIZE_TRAIN: 960
+  MAX_SIZE_TEST: 640
+  CROP:
+    ENABLED: True
+    TYPE: "absolute"
+    SIZE: (640, 640)
+DATALOADER:
+  NUM_WORKERS: 32
+  EVAL_BATCH_SIZE: 24
+VERSION: 2

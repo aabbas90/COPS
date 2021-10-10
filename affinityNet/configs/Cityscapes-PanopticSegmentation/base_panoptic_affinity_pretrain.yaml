@@ -1,0 +1,58 @@
+MODEL:
+  META_ARCHITECTURE: "PanopticAffinity"
+  BACKBONE:
+    FREEZE_AT: 0
+  RESNETS:
+    OUT_FEATURES: ["res2", "res3", "res5"]
+    RES5_DILATION: 2
+  SEM_SEG_HEAD:
+    NAME: "PanopticAffinitySemSegHead"
+    IN_FEATURES: ["res2", "res3", "res5"]
+    PROJECT_FEATURES: ["res2", "res3"]
+    PROJECT_CHANNELS: [32, 64]
+    ASPP_CHANNELS: 256
+    ASPP_DILATIONS: [6, 12, 18]
+    ASPP_DROPOUT: 0.1
+    HEAD_CHANNELS: 256
+    CONVS_DIM: 256
+    COMMON_STRIDE: 4
+    NUM_CLASSES: 19
+    LOSS_TYPE: "hard_pixel_mining"
+    NORM: "BN"
+    LOSS_WEIGHT: 1.0
+  AFF_EMBED_HEAD:
+    NAME: "PanopticAffinityInsEmbedHead"
+    IN_FEATURES: ["res2", "res3", "res5"]
+    PROJECT_FEATURES: ["res2", "res3"]
+    PROJECT_CHANNELS: [32, 64]
+    ASPP_CHANNELS: 256
+    ASPP_DILATIONS: [6, 12, 18]
+    ASPP_DROPOUT: 0.1
+    HEAD_CHANNELS: 256
+    CONVS_DIM: 256
+    COMMON_STRIDE: 4
+    NORM: "BN"
+    AFF_LOSS_WEIGHT: 0.25
+    EDGE_DISTANCES: [1, 4, 16, 32, 64]
+    EDGE_SAMPLING_INTERVALS: [1, 1, 1, 1, 1]
+    LOSS_TOP_K: 0.25
+  PANOPTIC_AFFINITY:
+    AMC_LOSS_WEIGHT: 0.0
+    STUFF_AREA: 2048
+DATASETS:
+  TRAIN: ("cityscapes_fine_panoptic_train",)
+  TEST: ("cityscapes_fine_panoptic_small_val",)
+INPUT:
+  INSTANCE_LOSS_WEIGHT: 4.0
+  IGNORE_STUFF_IN_AFFINITIES: False
+  IGNORE_CROWD: False
+  MIN_SIZE_TRAIN: (512, 640, 704, 832, 896, 1024, 1152, 1216, 1344, 1408, 1536, 1664, 1728, 1856, 1920, 2048)
+  MIN_SIZE_TRAIN_SAMPLING: "choice"
+  MIN_SIZE_TEST: 1024
+  MAX_SIZE_TRAIN: 4096
+  MAX_SIZE_TEST: 2048
+  CROP:
+    ENABLED: True
+    TYPE: "absolute"
+    SIZE: (1024, 2048)
+VERSION: 2
