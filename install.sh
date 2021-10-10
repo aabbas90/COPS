@@ -5,11 +5,11 @@ pip install scipy
 pip install scikit-image
 
 # Install dependencies:
-python -m install depends/panopticapi/
+python -m pip install depends/panopticapi/
 python -m pip install depends/cityscapesScripts/
 
 # Install detectron2:
 python -m pip install depends/detectron2
 
 # Install AMWC, MWC solvers.
-python -m pip install depends/LPMP
+PACKAGES="mc" python3 -m pip install depends/LPMP

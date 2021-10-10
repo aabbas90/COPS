@@ -11,7 +11,7 @@ The code is developed and tested on `CUDA 10.1`. We use conda package manager to
     conda create -n cops python=3.7
     conda activate cops
 
-Which creates and activates the environment. Afterwards check the contents of `install.sh` to install the dependencies. 
+Which creates and activates the environment. Afterwards check the contents of `install.sh` to install the dependencies (Make sure to fetch all submodules recursively). 
 
 # Setting up the datasets
 Please follow the guidelines of detectron2 from [detectron2_datasets](https://detectron2.readthedocs.io/en/latest/tutorials/builtin_datasets.html) to set-up the datasets. 

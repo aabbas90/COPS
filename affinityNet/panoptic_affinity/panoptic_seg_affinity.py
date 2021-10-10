@@ -189,7 +189,7 @@ class PanopticAffinityAMWC(nn.Module):
 
         end = time.time()
         amc_time = end - start
-        print_str = f"amc time: {amc_time :.1f}secs" 
+        print_str = ""
         amc_losses = {}
         foreground_probs = None
         if not self.training:
@@ -396,8 +396,8 @@ class PanopticAffinity(nn.Module):
         amc_losses = {}
 
         aff_losses, aff_logits = self.AFF_EMBED_head(backbone_features, sem_seg_logits_wo_interp, aff_targets, affinity_weights)
-        if not self.training:
-            print(f"Network forward pass time: {time.time() - start}")
+        #if not self.training:
+            # print(f"Network forward pass time: {time.time() - start}")
         segmentation_costs, affinity_costs = utils.ComputeMulticutCosts(sem_seg_logits_wo_interp, aff_logits)
         amc_losses, node_labels_pred, edge_labels_pred, panoptic_pred_one_hots, foreground_probs, index_to_class_labels = self.amwc_layer(
                                                                                                         segmentation_costs, affinity_costs,

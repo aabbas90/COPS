@@ -1,5 +1,5 @@
 import torch
-from lpmp_py.raw_solvers import amwc_solver, mwc_solver
+from lpmp_mc.raw_solvers import amwc_solver, mwc_solver
 import numpy as np 
 import torch.multiprocessing as mp
 
