@@ -1,7 +1,7 @@
 
 
 # Combinatorial Optimization for Panoptic Segmentation (COPS)
-Code for NeurIPS submission "Combinatorial Optimization for Panoptic Segmentation: An End-to-End Trainable Approach". 
+Official code for NeurIPS paper "Combinatorial Optimization for Panoptic Segmentation: A Fully Differentiable Approach". 
 
 # Installation
 Our codebase is built upon the [detectron2](https://github.com/facebookresearch/detectron2) framework with some of our (minor) modifications 
@@ -11,11 +11,7 @@ The code is developed and tested on `CUDA 10.1`. We use conda package manager to
     conda create -n cops python=3.7
     conda activate cops
 
-Which creates and activates the environment. Afterwards do
-
-`bash install.sh`
-
-which then installs the dependencies. 
+Which creates and activates the environment. Afterwards check the contents of `install.sh` to install the dependencies. 
 
 # Setting up the datasets
 Please follow the guidelines of detectron2 from [detectron2_datasets](https://detectron2.readthedocs.io/en/latest/tutorials/builtin_datasets.html) to set-up the datasets. 
@@ -61,5 +57,5 @@ Pretrained models after end-to-end training and their results:
 
 |Dataset| PQ | PQ_st | PQ_th | Per image inference time (s) | Checkpoint file |
 |--|--|--|--|--|--|
-|Cityscapes  |   62.277 | 67.189 | 55.522 | 1.8 |[one_drive_link](https://1drv.ms/u/s!ArZb5ru-HylUa8OeKuQ_uG2TCAg?e=ff0RN0) |
-|COCO | 37.132 | 32.503 | 40.199 | 0.4 | [one_drive_link](https://1drv.ms/u/s!ArZb5ru-HylUammpCzjL3D0aexQ?e=8Ed5MR) |
+|Cityscapes  |   62.1 | 67.2 | 55.1 | 1.8 | TBU |
+|COCO | 38.4 | 35.2 | 40.5 | 0.4 | TBU |
