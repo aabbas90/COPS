@@ -1,7 +1,7 @@
 
 
 # Combinatorial Optimization for Panoptic Segmentation (COPS)
-Official code for NeurIPS'21 paper "Combinatorial Optimization for Panoptic Segmentation: A Fully Differentiable Approach". 
+Official code for NeurIPS'21 paper "[Combinatorial Optimization for Panoptic Segmentation: A Fully Differentiable Approach](https://arxiv.org/abs/2106.03188)". 
 
 # Installation
 Our codebase is built upon the [detectron2](https://github.com/facebookresearch/detectron2) framework with some of our (minor) modifications 
