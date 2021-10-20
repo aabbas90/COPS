@@ -123,7 +123,7 @@ def solve_mc_grad_avg(batch_index, orig_semantic_labels_cpu, orig_edge_labels_cp
     for s in range(num_samples):
         pert = np.random.uniform(low = min_pert, high=max_pert)
         current_pert_node_costs = node_costs_cpu + pert * grad_node_costs_cpu
-        pert_instance_labels, pert_edge_labels, _ = mwc_solver(current_pert_node_costs, edge_indices_1d, edge_costs_1d)
+        pert_instance_labels, pert_edge_labels, _ = mwc_solver(edge_indices_1d, edge_costs_1d, current_pert_node_costs)
         pert_semantic_labels = get_semantic_labels_from_instance_labels(pert_instance_labels, index_to_category, num_semantic_classes)
         if s == 0:
             grad_semantic_avg = (pert_semantic_labels - orig_semantic_labels_cpu) / pert
