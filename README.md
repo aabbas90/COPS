@@ -1,7 +1,7 @@
 
 
 # Combinatorial Optimization for Panoptic Segmentation (COPS)
-Official code for NeurIPS paper "Combinatorial Optimization for Panoptic Segmentation: A Fully Differentiable Approach". 
+Official code for NeurIPS'21 paper "[Combinatorial Optimization for Panoptic Segmentation: A Fully Differentiable Approach](https://arxiv.org/abs/2106.03188)". 
 
 # Installation
 Our codebase is built upon the [detectron2](https://github.com/facebookresearch/detectron2) framework with some of our (minor) modifications 
@@ -28,7 +28,7 @@ Please follow the guidelines of detectron2 from [detectron2_datasets](https://de
 
     python train_net.py --config-file configs/Cityscapes-PanopticSegmentation/panoptic_affinity_pretrain.yaml --num-gpus 1 --resume
 
-### End-to-end:
+### Fully differentiable training:
 Assuming that the output of pretraining phase is saved to `PRETRAINED_DIR`
 where `WEIGHTS` is the name of checkpoint file. Then run the following command by replacing the values of above-mentioned variables:
 
@@ -40,7 +40,7 @@ We use `4` GPUs. Please change appropriately according to your setup:
 
     python train_net.py --config-file configs/COCO-PanopticSegmentation/panoptic_affinity_pretrain.yaml --num-gpus 4 --resume
     
-### End-to-end:
+### Fully differentiable:
 
     python train_net.py --config-file configs/COCO-PanopticSegmentation/panoptic_affinity_end_to_end.yaml --base-config-file ${PRETRAINED_DIR}/config.yaml --num-gpus 1 --resume MODEL.WEIGHTS ${PRETRAINED_DIR}/${WEIGHTS}
 
@@ -53,9 +53,9 @@ Where `DATALOADER.EVAL_BATCH_SIZE` controls batch size during inference. Set to 
 
 # Pretrained models
 
-Pretrained models after end-to-end training and their results: 
+Pretrained models after full training and their results: 
 
-|Dataset| PQ | PQ_st | PQ_th | Per image inference time (s) | Checkpoint file |
-|--|--|--|--|--|--|
-|Cityscapes  |   62.1 | 67.2 | 55.1 | 1.8 | TBU |
-|COCO | 38.4 | 35.2 | 40.5 | 0.4 | TBU |
+|Dataset| Backbone | PQ | PQ_st | PQ_th | Per image inference time (s) | Checkpoint file |
+|--|--|--|--|--|--|--|
+|Cityscapes  | ResNet50 |  62.1 | 67.2 | 55.1 | 1.8 | TBU |
+|COCO | ResNet50 | 38.4 | 35.2 | 40.5 | 0.4 | TBU |
