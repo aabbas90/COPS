@@ -7,7 +7,7 @@ MODEL:
   FREEZE_SEM_SEG_TILL: 1
   FREEZE_EDGE_COSTS_TILL: 1
   PANOPTIC_AFFINITY:
-    LAMBDA_VAL_START: 1.0
+    LAMBDA_VAL_START: 1000.0
     LAMBDA_VAL_END: 5000.0
     AMC_LOSS_WEIGHT: 100.0
     STUFF_AREA: 4096
@@ -45,11 +45,11 @@ DATALOADER:
   EVAL_BATCH_SIZE: 4
   NUM_WORKERS: 4 # invest computational resources in solving AMWC.
 TEST:
-  EVAL_PERIOD: -1
-SEED: -1
+  EVAL_PERIOD: 1000
+SEED: 17867965
 DATASETS:
   TRAIN: ("coco_2017_train_panoptic",)
   TEST: ("coco_2017_val_panoptic",)
-OUTPUT_DIR: output/coco/fully_differentiable/
+OUTPUT_DIR: output/coco/fully_differentiable_with_eval_l1000/
 VIS_PERIOD: 100
 VAL_LOSS_PERIOD: -1
