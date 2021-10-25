@@ -51,7 +51,7 @@ Assuming `MODEL_DIR` corresponds to the folder containing the checkpoint with na
 
     python train_net.py --config-file ${MODEL_DIR}/config.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS ${MODEL_DIR}/${WEIGHTS} OUTPUT_DIR ${MODEL_DIR}/${OUT_FOLDER} DATALOADER.EVAL_BATCH_SIZE 1 DATALOADER.NUM_WORKERS 0 MODEL.SAVE_RESULT_IMAGES False
 
-Where `DATALOADER.EVAL_BATCH_SIZE` controls batch size during inference. Set to larger than `1` to evaluate faster.
+Where `DATALOADER.EVAL_BATCH_SIZE` controls batch size during inference. Set to larger than `1` to evaluate faster (assuming enough computational resources are available).
 
 # Pretrained models
 
