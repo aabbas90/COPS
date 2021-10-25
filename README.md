@@ -2,7 +2,9 @@
 
 # Combinatorial Optimization for Panoptic Segmentation (COPS)
 Official code for NeurIPS'21 paper "[Combinatorial Optimization for Panoptic Segmentation: A Fully Differentiable Approach](https://arxiv.org/abs/2106.03188)". 
+![COPS pipeline](./images/COPS_pipeline.PNG)
 
+**TLDR:** _Panoptic segmentation pipeline containing CNN and a combinatorial optimization problem (AMWC). The whole pipeline is trained with panoptic quality loss by backpropagating through AMWC._
 # Installation
 Our codebase is built upon the [detectron2](https://github.com/facebookresearch/detectron2) framework with some of our (minor) modifications 
 such as printing per-image panoptic quality. For more information please consult the documentation of detectron2 as the codebase is designed according to their guidelines.
