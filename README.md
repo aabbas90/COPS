@@ -63,4 +63,4 @@ Pretrained models after full training and their results:
 |COCO | ResNet50 | 38.4 | 35.2 | 40.5 | 0.4 | [one_drive_link](https://1drv.ms/u/s!AoOFNp40l0lAgqMKarjx9xbAIct1wg?e=lZzWxh) |
 
 # Demo
-See https://github.com/aabbas90/COPS/blob/camera_ready/affinityNet/run_demo.sh
+See `affinityNet/run_demo.sh`
