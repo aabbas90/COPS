@@ -9,9 +9,9 @@
 . ~/.bashrc_private
 eval "$(conda shell.bash hook)"
 # Activate a conda environment:
-conda activate conseg_public
+conda activate cops
 
-PRETRAINED_DIR="output/coco/pretrained/"
+PRETRAINED_DIR="/home/ahabbas/projects/conseg_public/conseg/affinityNet/output/coco/v5_changed/"
 WEIGHTS="pretrained.pth"
 
 python train_net.py --config-file configs/COCO-PanopticSegmentation/panoptic_affinity_fully_differentiable.yaml \
