@@ -416,8 +416,6 @@ class PanopticAffinity(nn.Module):
         sem_seg_logits = F.interpolate(sem_seg_logits_wo_interp, scale_factor=self.sem_seg_head.common_stride, mode="bilinear", align_corners=False)
         for b, (node_label, panoptic_pred_one_hot, sem_seg_logit, input_per_image, orig_image_size, foreground_prob, index_to_class_label) in enumerate(zip(
             node_labels_pred, panoptic_pred_one_hots, sem_seg_logits, batched_inputs, images.image_sizes, foreground_probs, index_to_class_labels)):
-            image_path = input_per_image['file_name'].split(os.sep)
-            image_name = os.path.splitext(image_path[-1])[0] 
 
             img = input_per_image["image"]
             height = input_per_image.get("height")
@@ -486,6 +484,9 @@ class PanopticAffinity(nn.Module):
             processed_results.append(current_result) 
 
             if self.save_result_images:
+                image_path = input_per_image['file_name'].split(os.sep)
+                image_name = os.path.splitext(image_path[-1])[0] 
+
                 v_panoptic = Visualizer(img, self.meta)
                 v_panoptic = v_panoptic.draw_panoptic_seg_predictions(panoptic_image, None, alpha=0.3)
                 pan_img = v_panoptic.get_image()
